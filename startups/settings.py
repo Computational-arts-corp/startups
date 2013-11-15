@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'startups_list',
     'south',
+    'cities_users',
 )
 
 MIDDLEWARE_CLASSES = (
