@@ -8,13 +8,15 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Removing unique constraint on 'MediaOutlet', fields ['name']
-        db.delete_unique(u'startups_list_mediaoutlet', ['name'])
+        # Adding field 'Startup.applied_on'
+        db.add_column(u'startups_list_startup', 'applied_on',
+                      self.gf('django.db.models.fields.DateField')(null=True, blank=True),
+                      keep_default=False)
 
 
     def backwards(self, orm):
-        # Adding unique constraint on 'MediaOutlet', fields ['name']
-        db.create_unique(u'startups_list_mediaoutlet', ['name'])
+        # Deleting field 'Startup.applied_on'
+        db.delete_column(u'startups_list_startup', 'applied_on')
 
 
     models = {
@@ -22,7 +24,7 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'MediaOutlet'},
             'descr': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '200', 'unique': 'True', 'null': 'True', 'blank': 'True'}),
             'website_url': ('django.db.models.fields.CharField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'})
         },
         u'startups_list.recruiter': {
@@ -34,7 +36,11 @@ class Migration(SchemaMigration):
         },
         u'startups_list.startup': {
             'Meta': {'object_name': 'Startup'},
+            'applied_on': ('django.db.models.fields.DateField', [], {'null': 'True', 'blank': 'True'}),
+            'city_name': ('django.db.models.fields.CharField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'}),
             'descr': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
+            'has_applied': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+            'has_vacancy': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '200', 'unique': 'True', 'null': 'True', 'blank': 'True'}),
             'website_url': ('django.db.models.fields.CharField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'})

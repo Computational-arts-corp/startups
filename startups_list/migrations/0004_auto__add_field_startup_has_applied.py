@@ -8,19 +8,15 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Deleting model 'Recruiter'
-        db.delete_table(u'startups_list_recruiter')
+        # Adding field 'Startup.has_applied'
+        db.add_column(u'startups_list_startup', 'has_applied',
+                      self.gf('django.db.models.fields.BooleanField')(default=False),
+                      keep_default=False)
 
 
     def backwards(self, orm):
-        # Adding model 'Recruiter'
-        db.create_table(u'startups_list_recruiter', (
-            ('website_url', self.gf('django.db.models.fields.CharField')(max_length=200, null=True, blank=True)),
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('descr', self.gf('django.db.models.fields.TextField')(null=True, blank=True)),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=200, null=True, blank=True)),
-        ))
-        db.send_create_signal(u'startups_list', ['Recruiter'])
+        # Deleting field 'Startup.has_applied'
+        db.delete_column(u'startups_list_startup', 'has_applied')
 
 
     models = {
@@ -31,9 +27,19 @@ class Migration(SchemaMigration):
             'name': ('django.db.models.fields.CharField', [], {'max_length': '200', 'unique': 'True', 'null': 'True', 'blank': 'True'}),
             'website_url': ('django.db.models.fields.CharField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'})
         },
+        u'startups_list.recruiter': {
+            'Meta': {'object_name': 'Recruiter'},
+            'descr': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '200', 'unique': 'True', 'null': 'True', 'blank': 'True'}),
+            'website_url': ('django.db.models.fields.CharField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'})
+        },
         u'startups_list.startup': {
             'Meta': {'object_name': 'Startup'},
+            'city_name': ('django.db.models.fields.CharField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'}),
             'descr': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
+            'has_applied': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+            'has_vacancy': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '200', 'unique': 'True', 'null': 'True', 'blank': 'True'}),
             'website_url': ('django.db.models.fields.CharField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'})

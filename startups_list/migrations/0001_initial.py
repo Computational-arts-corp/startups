@@ -11,27 +11,27 @@ class Migration(SchemaMigration):
         # Adding model 'Startup'
         db.create_table(u'startups_list_startup', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=256)),
-            ('website_url', self.gf('django.db.models.fields.CharField')(max_length=256)),
-            ('descr', self.gf('django.db.models.fields.TextField')()),
+            ('name', self.gf('django.db.models.fields.CharField')(max_length=200, unique=True, null=True, blank=True)),
+            ('website_url', self.gf('django.db.models.fields.CharField')(max_length=200, null=True, blank=True)),
+            ('descr', self.gf('django.db.models.fields.TextField')(null=True, blank=True)),
         ))
         db.send_create_signal(u'startups_list', ['Startup'])
 
         # Adding model 'Recruiter'
         db.create_table(u'startups_list_recruiter', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=256)),
-            ('website_url', self.gf('django.db.models.fields.CharField')(max_length=256)),
-            ('descr', self.gf('django.db.models.fields.TextField')()),
+            ('name', self.gf('django.db.models.fields.CharField')(max_length=200, unique=True, null=True, blank=True)),
+            ('website_url', self.gf('django.db.models.fields.CharField')(max_length=200, null=True, blank=True)),
+            ('descr', self.gf('django.db.models.fields.TextField')(null=True, blank=True)),
         ))
         db.send_create_signal(u'startups_list', ['Recruiter'])
 
         # Adding model 'MediaOutlet'
         db.create_table(u'startups_list_mediaoutlet', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=256)),
-            ('website_url', self.gf('django.db.models.fields.CharField')(max_length=256)),
-            ('descr', self.gf('django.db.models.fields.TextField')()),
+            ('name', self.gf('django.db.models.fields.CharField')(max_length=200, unique=True, null=True, blank=True)),
+            ('website_url', self.gf('django.db.models.fields.CharField')(max_length=200, null=True, blank=True)),
+            ('descr', self.gf('django.db.models.fields.TextField')(null=True, blank=True)),
         ))
         db.send_create_signal(u'startups_list', ['MediaOutlet'])
 
@@ -50,24 +50,24 @@ class Migration(SchemaMigration):
     models = {
         u'startups_list.mediaoutlet': {
             'Meta': {'object_name': 'MediaOutlet'},
-            'descr': ('django.db.models.fields.TextField', [], {}),
+            'descr': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '256'}),
-            'website_url': ('django.db.models.fields.CharField', [], {'max_length': '256'})
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '200', 'unique': 'True', 'null': 'True', 'blank': 'True'}),
+            'website_url': ('django.db.models.fields.CharField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'})
         },
         u'startups_list.recruiter': {
             'Meta': {'object_name': 'Recruiter'},
-            'descr': ('django.db.models.fields.TextField', [], {}),
+            'descr': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '256'}),
-            'website_url': ('django.db.models.fields.CharField', [], {'max_length': '256'})
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '200', 'unique': 'True', 'null': 'True', 'blank': 'True'}),
+            'website_url': ('django.db.models.fields.CharField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'})
         },
         u'startups_list.startup': {
             'Meta': {'object_name': 'Startup'},
-            'descr': ('django.db.models.fields.TextField', [], {}),
+            'descr': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '256'}),
-            'website_url': ('django.db.models.fields.CharField', [], {'max_length': '256'})
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '200', 'unique': 'True', 'null': 'True', 'blank': 'True'}),
+            'website_url': ('django.db.models.fields.CharField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'})
         }
     }
 
