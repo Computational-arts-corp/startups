@@ -12,8 +12,18 @@ class StartupAdmin(admin.ModelAdmin):
 
   list_display = ( 'name', 'website_url', 'has_vacancy', 'has_applied' )
 
+class AddressbookitemAdmin( admin.ModelAdmin):
+#  fieldsets = [
+#    ( None, { 'fields': [ 'name' ] } ),
+#  ]
+  list_display = ( 'name', 'city_block' )
+
+class CityBlockAdmin( admin.ModelAdmin ):
+  list_display = ( 'name', 'date' )
+
 admin.site.register( Startup, StartupAdmin )
 admin.site.register( MediaOutlet )
 admin.site.register( Recruiter )
-
+admin.site.register( CityBlock, CityBlockAdmin )
+admin.site.register( Addressbookitem, AddressbookitemAdmin )
 
