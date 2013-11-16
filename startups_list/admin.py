@@ -10,7 +10,7 @@ class StartupAdmin(admin.ModelAdmin):
     ( 'Status', { 'fields': [ 'has_vacancy', 'has_applied', 'applied_on' ] } ),
   ]
 
-  list_display = ( 'name', 'website_url', 'has_vacancy', 'has_applied' )
+  list_display = ( 'name', 'website_url', 'is_dead', 'has_vacancy', 'has_applied', 'is_pursuitable' )
 
 class AddressbookitemAdmin( admin.ModelAdmin):
 #  fieldsets = [

@@ -17,6 +17,12 @@ class Startup(models.Model):
 
   is_dead = models.BooleanField( default=False )
 
+  def is_pursuitable(self):
+    return self.has_vacancy and (not self.is_dead) and (not self.has_applied)
+  # is_pursuitable.admin_order_field = 'is_dead'
+  is_pursuitable.boolean = True
+  is_pursuitable.short_description = 'Pursuitable?'
+
   def __unicode__(self):
     return self.name
 
