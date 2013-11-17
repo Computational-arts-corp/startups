@@ -1,5 +1,11 @@
 
 <h1>Startups Index</h1>
 
-
+{% if startups %}
+  <ul>
+    {% for startup in startups %}
+      <li>{{ startup.name }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
 
