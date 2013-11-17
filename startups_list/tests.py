@@ -1,5 +1,6 @@
 from django.test import TestCase
 from django.core.urlresolvers import reverse, resolve, get_resolver
+from django.test.client import Client
 
 import startups_list
 
@@ -26,3 +27,11 @@ class TestUrlsRoot(TestCase):
     a = self.resolver.resolve('/startups/sanity')
     # print '+++ +++'
     self.assertEqual( a.url_name, 'sanity' )
+
+class TestViews(TestCase):
+  def setUp(self):
+    self.client = Client(HTTP_USER_AGENT='Mozilla/5.0')
+
+  def test_index(self):
+    response = self.client.get('/startups/')
+    self.assertEqual( 0, len(response.context['startups']))
