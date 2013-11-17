@@ -2,7 +2,7 @@
 from django.contrib import admin
 
 from startups_list.models import Startup, MediaOutlet, Recruiter
-from cities_users.models import Addressbookitem, CityBlock
+from cities_users.models import Addressbookitem, CityBlock, Day
 
 class StartupAdmin(admin.ModelAdmin):
   fieldsets = [
@@ -18,6 +18,9 @@ class AddressbookitemAdmin( admin.ModelAdmin):
 #  ]
   list_display = ( 'name', 'city_block' )
 
+class DayAdmin(admin.ModelAdmin):
+  list_display = ( 'a1', 'a2', 'a3', 'a4', 'a5', 'work', 'dream' )
+
 class CityBlockAdmin( admin.ModelAdmin ):
   list_display = ( 'name', 'date' )
 
@@ -26,4 +29,4 @@ admin.site.register( MediaOutlet )
 admin.site.register( Recruiter )
 admin.site.register( CityBlock, CityBlockAdmin )
 admin.site.register( Addressbookitem, AddressbookitemAdmin )
-
+admin.site.register( Day, DayAdmin )

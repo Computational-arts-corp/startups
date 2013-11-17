@@ -20,3 +20,13 @@ class Addressbookitem(models.Model):
   def __unicode__(self):
     return self.name
 
+class Day(models.Model):
+  date = models.CharField(max_length=10)
+  a1 = models.CharField(max_length=250)
+  a2 = models.CharField(max_length=250)
+  a3 = models.CharField(max_length=250)
+  a4 = models.CharField(max_length=250)
+  a5 = models.CharField(max_length=250)
+  dream = models.CharField(max_length=250)
+  work = models.CharField(max_length=250)
+
