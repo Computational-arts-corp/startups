@@ -24,7 +24,7 @@ class Addressbookitem(models.Model):
   descr = models.TextField( null=True, blank=True )
 
   city_block = models.ForeignKey( CityBlock )
-  # city = models.ForeignKey(City, null=True)
+  city = models.ForeignKey( City, blank=True,null=True )
 
   def __unicode__(self):
     return self.name
