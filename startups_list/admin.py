@@ -19,7 +19,7 @@ class AddressbookitemAdmin( admin.ModelAdmin):
   list_display = ( 'name', 'city_block' )
 
 class DayAdmin(admin.ModelAdmin):
-  list_display = ( 'a1', 'a2', 'a3', 'a4', 'a5', 'work', 'dream' )
+  list_display = ( 'date', 'a1', 'a2', 'a3', 'a4', 'a5', 'work', 'dream' )
 
 class CityBlockAdmin( admin.ModelAdmin ):
   list_display = ( 'name', 'date' )

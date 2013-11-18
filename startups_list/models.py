@@ -2,6 +2,8 @@
 from django.db import models
 from django.utils import timezone
 
+from cities_users.models import City
+
 import datetime
 
 class Startup(models.Model):
@@ -10,7 +12,8 @@ class Startup(models.Model):
   descr = models.TextField( null=True, blank=True )
 
   city_name = models.CharField(max_length=200, null=True, blank=True )
-  
+  # city = models.ForeignKey(City)
+
   has_vacancy = models.BooleanField( default=True )
   has_applied = models.BooleanField( default=False )
   applied_on = models.DateField( 'applied on', blank=True, null=True )
@@ -30,6 +33,7 @@ class Recruiter(models.Model):
   name = models.CharField(max_length=200, null=True, blank=True, unique=True )
   website_url = models.CharField(max_length=200, null=True, blank=True, unique=False )
   descr = models.TextField(null=True, blank=True )
+  # city = models.ForeignKey(City)
 
   def __unicode__(self):
     return self.name
