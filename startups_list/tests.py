@@ -35,3 +35,13 @@ class TestViews(TestCase):
   def test_index(self):
     response = self.client.get('/startups/')
     self.assertEqual( 0, len(response.context['startups']))
+
+class TestStartupModel(TestCase):
+  def setUp(self):
+    a = 'a'
+
+  def tearDown(self):
+    b = 'b'
+
+  def test_list_pursuitable(self):
+    self.assertEqual( 1, 2 )

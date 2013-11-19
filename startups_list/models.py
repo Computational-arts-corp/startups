@@ -10,8 +10,7 @@ class Startup(models.Model):
   website_url = models.CharField( max_length=200, null=True, blank=True )
   descr = models.TextField( null=True, blank=True )
 
-  city_name = models.CharField(max_length=200, null=True, blank=True )
-  # city = models.ForeignKey(City)
+  city = models.ForeignKey(City, blank=True,null=True)
 
   has_vacancy = models.BooleanField( default=True )
   has_applied = models.BooleanField( default=False )

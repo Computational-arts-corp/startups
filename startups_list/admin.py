@@ -6,11 +6,11 @@ from cities_users.models import Addressbookitem, CityBlock, Day, City
 
 class StartupAdmin(admin.ModelAdmin):
   fieldsets = [
-    ( None, { 'fields': [ 'name', 'website_url', 'descr', 'city_name', 'is_dead' ] } ),
+    ( None, { 'fields': [ 'name', 'website_url', 'descr', 'city', 'is_dead' ] } ),
     ( 'Status', { 'fields': [ 'has_vacancy', 'has_applied', 'applied_on' ] } ),
   ]
 
-  list_display = ( 'name', 'website_url', 'is_dead', 'has_vacancy', 'has_applied', 'is_pursuitable' )
+  list_display = ( 'name', 'website_url', 'city', 'is_dead', 'has_vacancy', 'has_applied', 'is_pursuitable' )
 
 class AddressbookitemAdmin( admin.ModelAdmin):
 #  fieldsets = [
@@ -28,7 +28,7 @@ class CityAdmin( admin.ModelAdmin ):
   list_display = [ 'name' ]
 
 class RecruiterAdmin( admin.ModelAdmin ):
-  list_display = ( 'name', 'has_applied' )
+  list_display = ( 'name', 'website_url', 'has_applied' )
 
 admin.site.register( Startup, StartupAdmin )
 admin.site.register( MediaOutlet )
