@@ -3,6 +3,7 @@ from django.core.urlresolvers import reverse, resolve, get_resolver
 from django.test.client import Client
 
 import startups_list
+from startups_list.models import Startup
 
 # >>> from django.core.urlresolvers import get_resolver
 # >>> resolver = get_resolver(None)
@@ -20,12 +21,9 @@ class TestUrlsRoot(TestCase):
   def test_root(self):
     a = self.resolver.resolve('/')
     self.assertEqual(a.url_name, 'django.views.generic.base.RedirectView')
-    # print '+++ +++'
-    # print a
 
   def test_sanity(self):
     a = self.resolver.resolve('/startups/sanity')
-    # print '+++ +++'
     self.assertEqual( a.url_name, 'sanity' )
 
 class TestViews(TestCase):
@@ -38,10 +36,16 @@ class TestViews(TestCase):
 
 class TestStartupModel(TestCase):
   def setUp(self):
-    a = 'a'
+    Startup.objects.create( name='Startup Name', website_url='http://example.com', is_dead=False, has_vacancy=True, has_applied=False )
 
   def tearDown(self):
     b = 'b'
 
   def test_list_pursuitable(self):
-    self.assertEqual( 1, 2 )
+    result = Startup.list_pursuitable()
+    expected = Startup.objects.all()
+    # print '+++ +++'
+    # print expected
+    # print result
+
+    self.assertEqual( expected[0].name, result[0].name )

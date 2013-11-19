@@ -18,6 +18,15 @@ class Startup(models.Model):
 
   is_dead = models.BooleanField( default=False )
 
+  @classmethod
+  def list_pursuitable(self):
+    all_startups = Startup.objects.all()
+    out = []
+    for s in all_startups:
+      if s.has_vacancy and (not s.is_dead) and (not s.has_applied):
+        out.append( s )
+    return out
+
   def is_pursuitable(self):
     return self.has_vacancy and (not self.is_dead) and (not self.has_applied)
   # is_pursuitable.admin_order_field = 'is_dead'
